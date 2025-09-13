@@ -1,5 +1,13 @@
 package ServerFunctionReference;
 
+import java.util.ArrayDeque;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Deque;
+import java.util.HashSet;
+import java.util.Set;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiReferenceBase;
@@ -10,18 +18,14 @@ import com.jetbrains.php.PhpIndex;
 import com.jetbrains.php.lang.psi.elements.Method;
 import com.jetbrains.php.lang.psi.elements.PhpClass;
 import com.jetbrains.php.lang.psi.elements.StringLiteralExpression;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.*;
 
 public class ServerFunctionReference extends PsiReferenceBase<XmlTag> {
 
-    private @NotNull String logicMethodName;
+    final private @NotNull String logicMethodName;
 
     public ServerFunctionReference(
-            @NotNull XmlTag element,
-            @NotNull String logicMethodName
+        @NotNull XmlTag element,
+        @NotNull String logicMethodName
     ) {
         super(element, true);
 
@@ -61,8 +65,8 @@ public class ServerFunctionReference extends PsiReferenceBase<XmlTag> {
             Method method = phpClass.findMethodByName(this.logicMethodName);
             if (method != null) {
                 PsiElement[] found = PsiTreeUtil.collectElements(method, el ->
-                        el instanceof StringLiteralExpression &&
-                                target.equals(((StringLiteralExpression) el).getContents())
+                    el instanceof StringLiteralExpression &&
+                    target.equals(((StringLiteralExpression) el).getContents())
                 );
                 if (found.length > 0) {
                     return found[0];  // ✅ našli jsme literál, konec
@@ -80,4 +84,5 @@ public class ServerFunctionReference extends PsiReferenceBase<XmlTag> {
     public Object @NotNull [] getVariants() {
         return super.getVariants();
     }
+
 }

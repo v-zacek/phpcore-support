@@ -1,0 +1,43 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+indent_style = space
+indent_size = 4
+trim_trailing_whitespace = true
+
+[*.java]
+# Java code style
+ij_java_imports_layout = *, javax.**, java.**, org.**, com.**, cz.**
+ij_java_class_count_to_use_import_on_demand = 999
+ij_java_names_count_to_use_import_on_demand = 999
+ij_java_imports_with_subpackages = false
+ij_java_sort_imports = true
+
+# Wrap and align
+ij_java_align_multiline_parameters = true
+ij_java_align_multiline_parameters_in_calls = true
+ij_java_align_multiline_binary_operation = true
+ij_java_align_multiline_chained_methods = false
+
+# Braces
+ij_java_brace_style = end_of_line
+ij_java_keep_line_breaks = true
+ij_java_keep_simple_blocks_in_one_line = false
+ij_java_keep_simple_methods_in_one_line = false
+
+# Spaces
+ij_java_space_before_if_parentheses = true
+ij_java_space_before_for_parentheses = true
+ij_java_space_before_while_parentheses = true
+ij_java_space_before_catch_parentheses = true
+ij_java_space_before_switch_parentheses = true
+
+[*.xml]
+# XML formatting
+indent_size = 2
+ij_xml_keep_line_breaks = true
+ij_xml_align_attributes = true
+ij_xml_space_around_equals_in_attribute = true
