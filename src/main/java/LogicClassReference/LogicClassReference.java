@@ -15,7 +15,7 @@ public class LogicClassReference extends PsiReferenceBase<XmlTag> {
     private final String className;
 
     public LogicClassReference(@NotNull XmlTag element, String className) {
-        super(element, true);
+        super(element, false);
         this.className = className;
     }
 
