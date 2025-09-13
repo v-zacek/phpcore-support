@@ -1,25 +1,16 @@
-<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
-    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
-    <id>io.github.v-zacek.phpcore-support</id>
+  <id>io.github.v-zacek.phpcore-support</id>
+  <name>Phpcore support</name>
+  <vendor url = "https://github.com/v-zacek/">v-zacek</vendor>
+  <version>1.0.0</version>
 
-    <!-- Public plugin name should be written in Title Case.
-         Guidelines: https://plugins.jetbrains.com/docs/marketplace/best-practices-for-listing.html#plugin-name -->
-    <name>Phpcore-support</name>
+  <idea-version since-build = "250" until-build = "252.*"/>
 
-    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
-    <vendor url="https://github.com/v-zacek/">v-zacek</vendor>
+  <depends>com.intellij.modules.platform</depends>
+  <depends>com.jetbrains.php</depends>
 
-
-    <!-- Product and plugin compatibility requirements.
-         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
-    <depends>com.intellij.modules.platform</depends>
-    <depends>com.jetbrains.php</depends>
-
-    <!-- Extension points defined by the plugin.
-         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
-    <extensions defaultExtensionNs="com.intellij">
-        <psi.referenceContributor implementation="LogicClassReference.LogicClassReferenceContributor" />
-        <psi.referenceContributor implementation="ServerFunctionReference.ServerFunctionReferenceContributor" />
-    </extensions>
+  <extensions defaultExtensionNs = "com.intellij">
+    <psi.referenceContributor implementation = "LogicClassReference.LogicClassReferenceContributor"/>
+    <psi.referenceContributor implementation = "ServerFunctionReference.ServerFunctionReferenceContributor"/>
+  </extensions>
 </idea-plugin>
