@@ -1,4 +1,4 @@
-package ServerFunctionReference;
+package FormFunctionReference;
 
 import java.util.ArrayDeque;
 import java.util.Arrays;
@@ -19,11 +19,11 @@ import com.jetbrains.php.lang.psi.elements.Method;
 import com.jetbrains.php.lang.psi.elements.PhpClass;
 import com.jetbrains.php.lang.psi.elements.StringLiteralExpression;
 
-public class ServerFunctionReference extends PsiReferenceBase<XmlTag> {
+public class FormFunctionReference extends PsiReferenceBase<XmlTag> {
 
     final private @NotNull String logicMethodName;
 
-    public ServerFunctionReference(
+    public FormFunctionReference(
         @NotNull XmlTag element,
         @NotNull String logicMethodName
     ) {

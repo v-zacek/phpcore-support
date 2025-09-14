@@ -1,0 +1,79 @@
+package LogicClassFunctionReference;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import org.jetbrains.annotations.NotNull;
+import com.intellij.openapi.project.Project;
+import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.psi.PsiElementResolveResult;
+import com.intellij.psi.PsiFile;
+import com.intellij.psi.PsiManager;
+import com.intellij.psi.PsiPolyVariantReferenceBase;
+import com.intellij.psi.ResolveResult;
+import com.intellij.psi.search.FilenameIndex;
+import com.intellij.psi.search.GlobalSearchScope;
+import com.intellij.psi.util.PsiTreeUtil;
+import com.intellij.psi.xml.XmlFile;
+import com.intellij.psi.xml.XmlTag;
+import com.jetbrains.php.lang.psi.elements.PhpClass;
+import com.jetbrains.php.lang.psi.elements.StringLiteralExpression;
+
+public class LogicClassFunctionReference extends PsiPolyVariantReferenceBase<StringLiteralExpression> {
+
+    private final @NotNull PhpClass containingClass;
+    private final @NotNull String xmlFunctionTag;
+
+    public LogicClassFunctionReference(
+        @NotNull StringLiteralExpression element,
+        @NotNull PhpClass containingClass,
+        @NotNull String xmlFunctionTag
+    ) {
+        super(element, false);
+
+        this.containingClass = containingClass;
+        this.xmlFunctionTag = xmlFunctionTag;
+    }
+
+
+    @Override
+    public Object @NotNull [] getVariants() {
+        return super.getVariants();
+    }
+
+    @Override
+    public ResolveResult @NotNull [] multiResolve(boolean b) {
+        Project project = getElement().getProject();
+        Collection<VirtualFile> files = FilenameIndex.getAllFilesByExt(
+            project,
+            "xml",
+            GlobalSearchScope.projectScope(project)
+        );
+
+        String literalValue = getElement().getContents();
+
+        List<ResolveResult> results = new ArrayList<>();
+
+        for (VirtualFile file : files) {
+            PsiFile psiFile = PsiManager.getInstance(project).findFile(file);
+            if (!(psiFile instanceof XmlFile xmlFile)) continue;
+
+            XmlTag root = xmlFile.getRootTag();
+            if (root == null) continue;
+
+            var logicClassTag = root.findFirstSubTag("logicclass");
+            if (logicClassTag == null) continue;
+
+            if (!containingClass.getName().equals(logicClassTag.getValue().getTrimmedText())) continue;
+
+            for (XmlTag tag : PsiTreeUtil.findChildrenOfType(xmlFile, XmlTag.class)) {
+                if (this.xmlFunctionTag.equals(tag.getName()) &&
+                    literalValue.equals(tag.getValue().getTrimmedText())) {
+                    results.add(new PsiElementResolveResult(tag));
+                }
+            }
+        }
+
+        return results.toArray(new ResolveResult[0]);
+    }
+}

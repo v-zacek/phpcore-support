@@ -11,6 +11,7 @@
 
   <extensions defaultExtensionNs = "com.intellij">
     <psi.referenceContributor implementation = "LogicClassReference.LogicClassReferenceContributor"/>
-    <psi.referenceContributor implementation = "ServerFunctionReference.ServerFunctionReferenceContributor"/>
+    <psi.referenceContributor implementation = "FormFunctionReference.FormFunctionReferenceContributor"/>
+    <psi.referenceContributor implementation = "LogicClassFunctionReference.LogicClassFunctionReferenceContributor"/>
   </extensions>
 </idea-plugin>

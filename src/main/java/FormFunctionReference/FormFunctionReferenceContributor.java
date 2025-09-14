@@ -1,27 +1,27 @@
-package ServerFunctionReference;
+package FormFunctionReference;
 
 import org.jetbrains.annotations.NotNull;
 import com.intellij.patterns.XmlPatterns;
 import com.intellij.psi.PsiReferenceContributor;
 import com.intellij.psi.PsiReferenceRegistrar;
 
-public class ServerFunctionReferenceContributor extends PsiReferenceContributor {
+public class FormFunctionReferenceContributor extends PsiReferenceContributor {
 
     @Override
     public void registerReferenceProviders(@NotNull PsiReferenceRegistrar registrar) {
         registrar.registerReferenceProvider(
             XmlPatterns.xmlTag().withName("prepareValueFunction"),
-            new ServerFunctionReferenceProvider("prepareValue")
+            new FormFunctionReferenceProvider("prepareValue")
         );
 
         registrar.registerReferenceProvider(
             XmlPatterns.xmlTag().withName("serverValidateFunction"),
-            new ServerFunctionReferenceProvider("validateData")
+            new FormFunctionReferenceProvider("validateData")
         );
 
         registrar.registerReferenceProvider(
             XmlPatterns.xmlTag().withName("editValueFunction"),
-            new ServerFunctionReferenceProvider("editValue")
+            new FormFunctionReferenceProvider("editValue")
         );
     }
 

@@ -1,4 +1,4 @@
-package ServerFunctionReference;
+package FormFunctionReference;
 
 import org.jetbrains.annotations.NotNull;
 import com.intellij.psi.PsiElement;
@@ -7,11 +7,11 @@ import com.intellij.psi.PsiReferenceProvider;
 import com.intellij.psi.xml.XmlTag;
 import com.intellij.util.ProcessingContext;
 
-public class ServerFunctionReferenceProvider extends PsiReferenceProvider {
+public class FormFunctionReferenceProvider extends PsiReferenceProvider {
 
     final private @NotNull String logicMethodName;
 
-    public ServerFunctionReferenceProvider(
+    public FormFunctionReferenceProvider(
         @NotNull String logicMethodName
     ) {
         this.logicMethodName = logicMethodName;
@@ -28,7 +28,7 @@ public class ServerFunctionReferenceProvider extends PsiReferenceProvider {
         if (functionName.isEmpty()) return PsiReference.EMPTY_ARRAY;
 
         return new PsiReference[]{
-            new ServerFunctionReference(tag, this.logicMethodName)
+            new FormFunctionReference(tag, this.logicMethodName)
         };
     }
 
