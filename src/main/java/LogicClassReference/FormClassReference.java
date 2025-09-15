@@ -10,11 +10,11 @@ import com.intellij.psi.xml.XmlTag;
 import com.jetbrains.php.PhpIndex;
 import com.jetbrains.php.lang.psi.elements.PhpClass;
 
-public class LogicClassReference extends PsiReferenceBase<XmlTag> {
+public class FormClassReference extends PsiReferenceBase<XmlTag> {
 
     private final String className;
 
-    public LogicClassReference(@NotNull XmlTag element, String className) {
+    public FormClassReference(@NotNull XmlTag element, String className) {
         super(element, false);
         this.className = className;
     }

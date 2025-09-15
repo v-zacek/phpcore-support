@@ -10,7 +10,7 @@
   <depends>com.jetbrains.php</depends>
 
   <extensions defaultExtensionNs = "com.intellij">
-    <psi.referenceContributor implementation = "LogicClassReference.LogicClassReferenceContributor"/>
+    <psi.referenceContributor implementation = "LogicClassReference.FormClassReferenceContributor"/>
     <psi.referenceContributor implementation = "FormFunctionReference.FormFunctionReferenceContributor"/>
     <psi.referenceContributor implementation = "LogicClassFunctionReference.LogicClassFunctionReferenceContributor"/>
   </extensions>
