@@ -16,6 +16,7 @@ import com.intellij.psi.search.GlobalSearchScope;
 import com.intellij.psi.util.PsiTreeUtil;
 import com.intellij.psi.xml.XmlFile;
 import com.intellij.psi.xml.XmlTag;
+import com.jetbrains.php.PhpIndex;
 import com.jetbrains.php.lang.psi.elements.PhpClass;
 import com.jetbrains.php.lang.psi.elements.StringLiteralExpression;
 
@@ -34,7 +35,6 @@ public class LogicClassFunctionReference extends PsiPolyVariantReferenceBase<Str
         this.containingClass = containingClass;
         this.xmlFunctionTag = xmlFunctionTag;
     }
-
 
     @Override
     public Object @NotNull [] getVariants() {
@@ -64,7 +64,10 @@ public class LogicClassFunctionReference extends PsiPolyVariantReferenceBase<Str
             var logicClassTag = root.findFirstSubTag("logicclass");
             if (logicClassTag == null) continue;
 
-            if (!containingClass.getName().equals(logicClassTag.getValue().getTrimmedText())) continue;
+            Collection<PhpClass> logicClasses = PhpIndex.getInstance(project)
+                .getAnyByFQN("\\" + logicClassTag.getValue().getTrimmedText());
+
+            if (!isAnyDescender(containingClass, logicClasses)) continue;
 
             for (XmlTag tag : PsiTreeUtil.findChildrenOfType(xmlFile, XmlTag.class)) {
                 if (this.xmlFunctionTag.equals(tag.getName()) &&
@@ -75,5 +78,23 @@ public class LogicClassFunctionReference extends PsiPolyVariantReferenceBase<Str
         }
 
         return results.toArray(new ResolveResult[0]);
+    }
+
+    private boolean isAnyDescender(PhpClass containingClass, Collection<PhpClass> logicClasses) {
+        for (PhpClass logicClass : logicClasses) {
+            if (logicClass.getFQN().equals(containingClass.getFQN())) {
+                return true;
+            }
+
+            Collection<PhpClass> superClasses = logicClass.getSuperClasses();
+
+            for (PhpClass superClass : superClasses) {
+                if (superClass.getFQN().equals(containingClass.getFQN())) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 }
