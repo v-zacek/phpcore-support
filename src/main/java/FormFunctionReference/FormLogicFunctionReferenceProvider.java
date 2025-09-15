@@ -7,11 +7,11 @@ import com.intellij.psi.PsiReferenceProvider;
 import com.intellij.psi.xml.XmlTag;
 import com.intellij.util.ProcessingContext;
 
-public class FormFunctionReferenceProvider extends PsiReferenceProvider {
+public class FormLogicFunctionReferenceProvider extends PsiReferenceProvider {
 
     final private @NotNull String logicMethodName;
 
-    public FormFunctionReferenceProvider(
+    public FormLogicFunctionReferenceProvider(
         @NotNull String logicMethodName
     ) {
         this.logicMethodName = logicMethodName;
@@ -28,7 +28,7 @@ public class FormFunctionReferenceProvider extends PsiReferenceProvider {
         if (functionName.isEmpty()) return PsiReference.EMPTY_ARRAY;
 
         return new PsiReference[]{
-            new FormFunctionReference(tag, this.logicMethodName)
+            new FormLogicFunctionReference(tag, this.logicMethodName)
         };
     }
 

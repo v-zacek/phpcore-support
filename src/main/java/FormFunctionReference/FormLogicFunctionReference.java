@@ -19,11 +19,11 @@ import com.jetbrains.php.lang.psi.elements.Method;
 import com.jetbrains.php.lang.psi.elements.PhpClass;
 import com.jetbrains.php.lang.psi.elements.StringLiteralExpression;
 
-public class FormFunctionReference extends PsiReferenceBase<XmlTag> {
+public class FormLogicFunctionReference extends PsiReferenceBase<XmlTag> {
 
     final private @NotNull String logicMethodName;
 
-    public FormFunctionReference(
+    public FormLogicFunctionReference(
         @NotNull XmlTag element,
         @NotNull String logicMethodName
     ) {
@@ -61,7 +61,6 @@ public class FormFunctionReference extends PsiReferenceBase<XmlTag> {
             PhpClass phpClass = queue.removeFirst();
             if (!visited.add(phpClass.getFQN())) continue;
 
-            // hledej metodu v této třídě
             Method method = phpClass.findMethodByName(this.logicMethodName);
             if (method != null) {
                 PsiElement[] found = PsiTreeUtil.collectElements(method, el ->
@@ -69,11 +68,10 @@ public class FormFunctionReference extends PsiReferenceBase<XmlTag> {
                     target.equals(((StringLiteralExpression) el).getContents())
                 );
                 if (found.length > 0) {
-                    return found[0];  // ✅ našli jsme literál, konec
+                    return found[0];
                 }
             }
 
-            // přidej všechny rodiče (extends + implements)
             queue.addAll(Arrays.stream(phpClass.getSupers()).toList());
         }
 
