@@ -5,6 +5,9 @@ import com.intellij.patterns.XmlPatterns;
 import com.intellij.psi.PsiReferenceContributor;
 import com.intellij.psi.PsiReferenceRegistrar;
 
+/**
+ * Form to logic class php literal
+ */
 public class FormLogicFunctionReferenceContributor extends PsiReferenceContributor {
 
     @Override

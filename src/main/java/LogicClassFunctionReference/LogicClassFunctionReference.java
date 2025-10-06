@@ -72,7 +72,7 @@ public class LogicClassFunctionReference extends PsiPolyVariantReferenceBase<Str
             for (XmlTag tag : PsiTreeUtil.findChildrenOfType(xmlFile, XmlTag.class)) {
                 if (this.xmlFunctionTag.equals(tag.getName()) &&
                     literalValue.equals(tag.getValue().getTrimmedText())) {
-                    results.add(new PsiElementResolveResult(tag));
+                    results.add(new PsiElementResolveResult(new XmlTagPsiElement(tag)));
                 }
             }
         }

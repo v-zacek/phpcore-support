@@ -5,6 +5,11 @@ import com.intellij.patterns.XmlPatterns;
 import com.intellij.psi.PsiReferenceContributor;
 import com.intellij.psi.PsiReferenceRegistrar;
 
+/**
+ * Form
+ * <logicclass> -> Php class
+ * <action> -> Php class
+ */
 public class FormClassReferenceContributor extends PsiReferenceContributor {
 
     @Override
