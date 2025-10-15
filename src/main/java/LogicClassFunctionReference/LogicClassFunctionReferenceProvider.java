@@ -16,6 +16,11 @@ import com.jetbrains.php.lang.psi.elements.StringLiteralExpression;
 
 public class LogicClassFunctionReferenceProvider extends PsiReferenceProvider {
 
+    private final String[] logicSuperClassFQNs = {
+        "\\logic",
+        "\\MpaLogic"
+    };
+
     private final @NotNull String logicMethodName;
     private final @NotNull String xmlFunctionTag;
 
@@ -53,6 +58,10 @@ public class LogicClassFunctionReferenceProvider extends PsiReferenceProvider {
     }
 
     private boolean extendsLogicClass(PhpClass phpClass) {
+        if (classIsLogicSuper(phpClass)) {
+            return true;
+        }
+
         Set<String> visited = new HashSet<>();
         Deque<PhpClass> queue = new ArrayDeque<>();
         queue.add(phpClass);
@@ -64,10 +73,21 @@ public class LogicClassFunctionReferenceProvider extends PsiReferenceProvider {
             }
 
             for (PhpClass superClass : current.getSupers()) {
-                if ("\\logic".equals(superClass.getFQN())) {
+                if (classIsLogicSuper(superClass)) {
                     return true;
                 }
                 queue.add(superClass);
+            }
+        }
+
+        return false;
+    }
+
+    private boolean classIsLogicSuper(PhpClass phpClass)
+    {
+        for (String fqn : this.logicSuperClassFQNs) {
+            if (fqn.equals(phpClass.getFQN())) {
+                return true;
             }
         }
 
