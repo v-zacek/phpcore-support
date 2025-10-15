@@ -13,5 +13,6 @@
     <psi.referenceContributor implementation = "LogicClassReference.FormClassReferenceContributor"/>
     <psi.referenceContributor implementation = "FormFunctionReference.FormLogicFunctionReferenceContributor"/>
     <psi.referenceContributor implementation = "LogicClassFunctionReference.LogicClassFunctionReferenceContributor"/>
+    <psi.referenceContributor implementation = "FormRequestReference.FormRequestReferenceContributor"/>
   </extensions>
 </idea-plugin>
