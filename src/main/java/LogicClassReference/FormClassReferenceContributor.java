@@ -23,6 +23,11 @@ public class FormClassReferenceContributor extends PsiReferenceContributor {
             XmlPatterns.xmlTag().withName("action"),
             new FormClassReferenceProvider()
         );
+
+        registrar.registerReferenceProvider(
+            XmlPatterns.xmlTag().withName("dbModel"),
+            new FormClassReferenceProvider()
+        );
     }
 
 }
