@@ -15,11 +15,11 @@ public class FormClassReferenceProvider extends PsiReferenceProvider {
         @NotNull ProcessingContext context
     ) {
         if (!(element instanceof XmlTag tag)) return PsiReference.EMPTY_ARRAY;
-        String className = tag.getValue().getTrimmedText();
-        if (className.isEmpty()) return PsiReference.EMPTY_ARRAY;
+        String content = tag.getValue().getTrimmedText();
+        if (content.isEmpty()) return PsiReference.EMPTY_ARRAY;
 
         return new PsiReference[]{
-            new FormClassReference(tag, className)
+            new FormClassReference(tag, content)
         };
     }
 
