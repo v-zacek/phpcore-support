@@ -1,4 +1,4 @@
-package LogicClassReference;
+package FormClassReference;
 
 import java.util.Collection;
 import org.jetbrains.annotations.NotNull;

@@ -1,4 +1,4 @@
-package LogicClassReference;
+package FormClassReference;
 
 import org.jetbrains.annotations.NotNull;
 import com.intellij.psi.PsiElement;
