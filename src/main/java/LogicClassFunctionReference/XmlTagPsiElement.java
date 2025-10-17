@@ -3,13 +3,13 @@ package LogicClassFunctionReference;
 import javax.swing.*;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.ide.util.PsiNavigationSupport;
-import com.intellij.navigation.ItemPresentation;
 import com.intellij.openapi.editor.Document;
 import com.intellij.psi.PsiDocumentManager;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.impl.FakePsiElement;
 import com.intellij.psi.xml.XmlTag;
+import org.jetbrains.annotations.Nullable;
 
 public class XmlTagPsiElement extends FakePsiElement {
 
@@ -26,7 +26,7 @@ public class XmlTagPsiElement extends FakePsiElement {
 
     @Override
     public String getName() {
-        return xmlTag.getName() + " (" + getContainingFile().getName() + ":" + getLineNumber() + ")";
+        return xmlTag.getName() + " - " + getFieldName();
     }
 
     @Override
@@ -39,26 +39,6 @@ public class XmlTagPsiElement extends FakePsiElement {
         return xmlTag.getContainingFile().getName() + ":" + getLineNumber();
     }
 
-    @Override
-    public ItemPresentation getPresentation() {
-        return new ItemPresentation() {
-            @Override
-            public String getPresentableText() {
-                return xmlTag.getName();
-            }
-
-            @Override
-            public String getLocationString() {
-                return xmlTag.getContainingFile().getName() + ":" + getLineNumber();
-            }
-
-            @Override
-            public Icon getIcon(boolean unused) {
-                return xmlTag.getIcon(0);
-            }
-        };
-    }
-
     private int getLineNumber() {
         Document doc = PsiDocumentManager.getInstance(xmlTag.getProject())
             .getDocument(xmlTag.getContainingFile());
@@ -66,6 +46,22 @@ public class XmlTagPsiElement extends FakePsiElement {
             return doc.getLineNumber(xmlTag.getTextOffset()) + 1;
         }
         return -1;
+    }
+
+    private @Nullable String getFieldName()
+    {
+        PsiElement[] children = xmlTag.getParent().getChildren();
+        for (PsiElement child : children) {
+            if (!(child instanceof XmlTag xmlChild)) {
+                continue;
+            }
+
+            if (xmlChild.getName().equals("fieldname")) {
+                return xmlChild.getValue().getTrimmedText();
+            }
+        }
+
+        return null;
     }
 
     @Override
