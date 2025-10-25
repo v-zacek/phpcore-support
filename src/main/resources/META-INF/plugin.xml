@@ -24,5 +24,13 @@
     >
       <add-to-group group-id = "GenerateGroup" anchor = "first"/>
     </action>
+
+    <action
+      class = "XmlAction.InsertXmlFormAction"
+      text = "Form Definition"
+      description = "Insert singleform/multiform definition"
+    >
+      <add-to-group group-id = "GenerateGroup" anchor = "after" relative-to-action = "InsertXmlItemAction"/>
+    </action>
   </actions>
 </idea-plugin>
