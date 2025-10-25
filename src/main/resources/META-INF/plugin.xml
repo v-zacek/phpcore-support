@@ -15,4 +15,14 @@
     <psi.referenceContributor implementation = "LogicClassFunctionReference.LogicClassFunctionReferenceContributor"/>
     <psi.referenceContributor implementation = "FormRequestReference.FormRequestReferenceContributor"/>
   </extensions>
+
+  <actions>
+    <action
+      class = "XmlAction.InsertXmlItemAction"
+      text = "Form Item"
+      description = "Insert form item scaffolding"
+    >
+      <add-to-group group-id = "GenerateGroup" anchor = "first"/>
+    </action>
+  </actions>
 </idea-plugin>
