@@ -2,7 +2,7 @@
       xsi:noNamespaceSchemaLocation = "https://schema.olc.cz/multiForm.xsd">
   <right></right>
   <header></header>
-  <formname></formname>
+  <formname>${NAME}</formname>
   <action alias = "1"></action>
   <enctype>multipart/form-data</enctype>
   <method>post</method>

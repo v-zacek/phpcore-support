@@ -1,5 +1,6 @@
 package action.xmlForm;
 
+import util.FileTemplateUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.codeInsight.template.Template;
@@ -47,7 +48,7 @@ public class InsertXmlFormAction extends BaseXmlAction implements DumbAware {
 
     private void insertSingleForm(Project project, Editor editor) {
         FileTemplate fileTemplate = FileTemplateManager.getInstance(project).getInternalTemplate("singleform");
-        String content = fileTemplate.getText();
+        String content = FileTemplateUtil.removeTemplateMacros(fileTemplate.getText());
 
         WriteCommandAction.runWriteCommandAction(project, () -> {
             TemplateManager templateManager = TemplateManager.getInstance(project);
@@ -62,7 +63,7 @@ public class InsertXmlFormAction extends BaseXmlAction implements DumbAware {
 
     private void insertMultiForm(Project project, Editor editor) {
         FileTemplate fileTemplate = FileTemplateManager.getInstance(project).getInternalTemplate("multiform");
-        String content = fileTemplate.getText();
+        String content = FileTemplateUtil.removeTemplateMacros(fileTemplate.getText());
 
         WriteCommandAction.runWriteCommandAction(project, () -> {
             TemplateManager templateManager = TemplateManager.getInstance(project);
