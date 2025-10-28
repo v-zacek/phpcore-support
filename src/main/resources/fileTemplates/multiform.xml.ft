@@ -1,0 +1,12 @@
+<form xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation = "https://schema.olc.cz/multiForm.xsd">
+  <right></right>
+  <header></header>
+  <formname></formname>
+  <action alias = "1"></action>
+  <enctype>multipart/form-data</enctype>
+  <method>post</method>
+  <mode>multiform</mode>
+  <logicclass></logicclass>
+
+</form>

@@ -4,6 +4,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.codeInsight.template.Template;
 import com.intellij.codeInsight.template.TemplateManager;
+import com.intellij.ide.fileTemplates.FileTemplate;
+import com.intellij.ide.fileTemplates.FileTemplateManager;
 import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
@@ -44,47 +46,30 @@ public class InsertXmlFormAction extends BaseXmlAction implements DumbAware {
     }
 
     private void insertSingleForm(Project project, Editor editor) {
+        FileTemplate fileTemplate = FileTemplateManager.getInstance(project).getInternalTemplate("singleform");
+        String content = fileTemplate.getText();
+
         WriteCommandAction.runWriteCommandAction(project, () -> {
             TemplateManager templateManager = TemplateManager.getInstance(project);
             Template template = templateManager.createTemplate("", "");
             template.setToReformat(true);
 
-            template.addTextSegment("<form xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"");
-            template.addTextSegment("xsi:noNamespaceSchemaLocation=\"https://schema.olc.cz/singleForm.xsd\">");
-            template.addTextSegment("<right></right>");
-            template.addTextSegment("<header></header>");
-            template.addTextSegment("<formname></formname>");
-            template.addTextSegment("<action alias=\"1\"></action>");
-            template.addTextSegment("<enctype>multipart/form-data</enctype>");
-            template.addTextSegment("<method>post</method>");
-            template.addTextSegment("<mode>singleform</mode>");
-            template.addTextSegment("<logicclass></logicclass>");
-            template.addTextSegment("\n\n");
-            template.addTextSegment("</form>");
-
+            template.addTextSegment(content);
 
             templateManager.startTemplate(editor, template);
         });
     }
 
     private void insertMultiForm(Project project, Editor editor) {
+        FileTemplate fileTemplate = FileTemplateManager.getInstance(project).getInternalTemplate("multiform");
+        String content = fileTemplate.getText();
+
         WriteCommandAction.runWriteCommandAction(project, () -> {
             TemplateManager templateManager = TemplateManager.getInstance(project);
             Template template = templateManager.createTemplate("", "");
             template.setToReformat(true);
 
-            template.addTextSegment("<form xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"");
-            template.addTextSegment("xsi:noNamespaceSchemaLocation=\"https://schema.olc.cz/singleForm.xsd\">");
-            template.addTextSegment("<right></right>");
-            template.addTextSegment("<header></header>");
-            template.addTextSegment("<formname></formname>");
-            template.addTextSegment("<action alias=\"1\"></action>");
-            template.addTextSegment("<enctype>multipart/form-data</enctype>");
-            template.addTextSegment("<method>post</method>");
-            template.addTextSegment("<mode>multiform</mode>");
-            template.addTextSegment("<logicclass></logicclass>");
-            template.addTextSegment("\n\n");
-            template.addTextSegment("</form>");
+            template.addTextSegment(content);
 
             templateManager.startTemplate(editor, template);
         });
