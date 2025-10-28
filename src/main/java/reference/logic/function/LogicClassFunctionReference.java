@@ -1,5 +1,6 @@
-package LogicClassFunctionReference;
+package reference.logic.function;
 
+import psi.XmlTagPsiElement;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;

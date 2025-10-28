@@ -1,4 +1,4 @@
-package XmlAction;
+package action.xmlForm;
 
 import org.jetbrains.annotations.NotNull;
 import com.intellij.codeInsight.template.Template;

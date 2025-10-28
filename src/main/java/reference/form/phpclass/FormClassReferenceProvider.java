@@ -1,4 +1,4 @@
-package FormClassReference;
+package reference.form.phpclass;
 
 import org.jetbrains.annotations.NotNull;
 import com.intellij.psi.PsiElement;

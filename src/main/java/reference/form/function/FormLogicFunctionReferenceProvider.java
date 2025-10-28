@@ -1,4 +1,4 @@
-package FormFunctionReference;
+package reference.form.function;
 
 import org.jetbrains.annotations.NotNull;
 import com.intellij.psi.PsiElement;

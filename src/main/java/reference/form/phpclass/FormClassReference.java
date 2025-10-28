@@ -1,17 +1,17 @@
-package FormClassReference;
+package reference.form.phpclass;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.psi.PsiManager;
-import com.intellij.psi.search.FilenameIndex;
-import com.intellij.psi.search.GlobalSearchScope;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiElement;
+import com.intellij.psi.PsiManager;
 import com.intellij.psi.PsiReferenceBase;
+import com.intellij.psi.search.FilenameIndex;
+import com.intellij.psi.search.GlobalSearchScope;
 import com.intellij.psi.xml.XmlTag;
 import com.jetbrains.php.PhpIndex;
 import com.jetbrains.php.lang.psi.elements.PhpClass;
@@ -42,16 +42,14 @@ public class FormClassReference extends PsiReferenceBase<XmlTag> {
         return new Object[0];
     }
 
-    private @Nullable PsiElement resolveClassName(Project project)
-    {
+    private @Nullable PsiElement resolveClassName(Project project) {
         Collection<? extends PhpClass> classes = PhpIndex.getInstance(project).getAnyByFQN("\\" + literal);
         if (classes.isEmpty()) return null;
 
         return (PsiElement) classes.toArray()[0];
     }
 
-    private @Nullable PsiElement resolveFileName(Project project)
-    {
+    private @Nullable PsiElement resolveFileName(Project project) {
         String path = this.literal;
 
         String[] parts = {};

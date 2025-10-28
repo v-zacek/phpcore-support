@@ -1,4 +1,4 @@
-package LogicClassFunctionReference;
+package reference.logic.function;
 
 import org.jetbrains.annotations.NotNull;
 import com.intellij.patterns.PlatformPatterns;

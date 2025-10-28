@@ -1,4 +1,4 @@
-package FormFunctionReference;
+package reference.form.function;
 
 import java.util.ArrayDeque;
 import java.util.Arrays;

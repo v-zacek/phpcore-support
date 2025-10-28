@@ -1,7 +1,7 @@
-package LogicClassFunctionReference;
+package psi;
 
-import javax.swing.*;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import com.intellij.ide.util.PsiNavigationSupport;
 import com.intellij.openapi.editor.Document;
 import com.intellij.psi.PsiDocumentManager;
@@ -9,7 +9,6 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.impl.FakePsiElement;
 import com.intellij.psi.xml.XmlTag;
-import org.jetbrains.annotations.Nullable;
 
 public class XmlTagPsiElement extends FakePsiElement {
 
@@ -48,8 +47,7 @@ public class XmlTagPsiElement extends FakePsiElement {
         return -1;
     }
 
-    private @Nullable String getFieldName()
-    {
+    private @Nullable String getFieldName() {
         PsiElement[] children = xmlTag.getParent().getChildren();
         for (PsiElement child : children) {
             if (!(child instanceof XmlTag xmlChild)) {

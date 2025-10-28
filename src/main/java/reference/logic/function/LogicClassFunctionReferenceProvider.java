@@ -1,4 +1,4 @@
-package LogicClassFunctionReference;
+package reference.logic.function;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
@@ -83,8 +83,7 @@ public class LogicClassFunctionReferenceProvider extends PsiReferenceProvider {
         return false;
     }
 
-    private boolean classIsLogicSuper(PhpClass phpClass)
-    {
+    private boolean classIsLogicSuper(PhpClass phpClass) {
         for (String fqn : this.logicSuperClassFQNs) {
             if (fqn.equals(phpClass.getFQN())) {
                 return true;
