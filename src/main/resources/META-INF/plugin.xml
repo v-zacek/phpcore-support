@@ -48,5 +48,21 @@
     >
       <add-to-group group-id = "NewGroup" anchor = "after" relative-to-action = "NewFile"/>
     </action>
+
+    <action
+      class = "action.createfile.CreateDbModelFileAction"
+      text = "DbModel"
+      description = "Create new DbModel"
+    >
+      <add-to-group group-id = "NewGroup" anchor = "after" relative-to-action = "NewFile"/>
+    </action>
+
+    <action
+      class = "action.createfile.CreatePageFileAction"
+      text = "Page"
+      description = "Create new Page"
+    >
+      <add-to-group group-id = "NewGroup" anchor = "after" relative-to-action = "NewFile"/>
+    </action>
   </actions>
 </idea-plugin>

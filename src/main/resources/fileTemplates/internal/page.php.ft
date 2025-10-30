@@ -1,0 +1,24 @@
+<?php
+
+class ${NAME} extends ABasePage
+{
+
+    public function startup(): bool
+    {
+        return true;
+    }
+
+    public function prepare(): void
+    {
+    }
+
+    public function render(): string
+    {
+        return '';
+    }
+
+    public function shutdown(): void
+    {
+    }
+
+}

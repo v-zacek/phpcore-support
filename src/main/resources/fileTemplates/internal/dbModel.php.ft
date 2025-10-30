@@ -1,0 +1,20 @@
+<?php
+
+class ${NAME} extends dbModel
+{
+
+    protected string \$tableName = '';
+
+    public function getSelect(): string
+    {
+        \$sql = '';
+
+        return \$sql;
+    }
+
+    protected function objectSqlComponent(): void
+    {
+        \$this->setPrimaryKeyColumnType('', self::TYPE_UNIQUEIDENTIFIER);
+    }
+
+}
