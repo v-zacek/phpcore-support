@@ -3,7 +3,8 @@
 class ${NAME} extends dbModel
 {
 
-    protected string \$tableName = '';
+    /** @var string */
+    protected \$tableName = '';
 
     public function getSelect(): string
     {
