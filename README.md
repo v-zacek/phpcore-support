@@ -9,7 +9,7 @@ A PhpStorm plugin for phpcore framework.
 
 ## Installation
 
-1. Download latest ZIP from [Releases](https://github.com/v-zacek/phpcore-support/releases/latest)
+1. Download latest installation package ZIP from [Releases](https://github.com/v-zacek/phpcore-support/releases/latest)
 2. In PhpStorm, open Settings → Plugins → ⚙ → Install Plugin from Disk
 3. Select downloaded ZIP and restart PhpStorm
 
