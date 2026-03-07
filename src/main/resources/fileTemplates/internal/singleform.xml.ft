@@ -8,5 +8,8 @@
   <method>post</method>
   <mode>singleform</mode>
   <logicclass></logicclass>
+  <display>
+    <columncount>2</columncount>
+  </display>
 
 </form>
