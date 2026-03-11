@@ -13,4 +13,4 @@ A PhpStorm plugin for phpcore framework.
 2. In PhpStorm, open Settings → Plugins → ⚙ → Install Plugin from Disk
 3. Select downloaded ZIP and restart PhpStorm
 
-Compatible with PhpStorm 2025.0 - 2025.2.*
+Compatible with PhpStorm 2025.0 - 2025.3.*

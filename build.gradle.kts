@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "io.github.v-zacek"
-version = "1.2.0"
+version = "1.3.0"
 
 repositories {
     mavenCentral()
@@ -18,7 +18,7 @@ repositories {
 // Read more: https://plugins.jetbrains.com/docs/intellij/tools-intellij-platform-gradle-plugin.html
 dependencies {
     intellijPlatform {
-        phpstorm("2025.2.1")
+        phpstorm("2025.3.3")
         bundledPlugin("com.jetbrains.php")
     }
 }
