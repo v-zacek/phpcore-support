@@ -1,0 +1,36 @@
+<?php
+
+class ${NAME}
+{
+
+    public function prepareValue(\$functionName, \$itemValue, \$defaultValue, Database \$database, \$rowPrefix, \$recorddata): mixed
+    {
+        return parent::prepareValue(\$functionName, \$itemValue, \$defaultValue, \$database, \$rowPrefix, \$recorddata);
+    }
+
+    public function validateData(\$itemValue, \$functionName, Database \$database, &\$exceptionMessage = "", \$rowPrefix = ""): bool
+    {
+        return parent::validateData(\$itemValue, \$functionName, \$database, \$exceptionMessage, \$rowPrefix);
+    }
+
+    public function editValue(\$itemValue, \$functionName, Database \$database, \$rowPrefix=""): mixed
+    {
+        return parent::editValue(\$itemValue, \$functionName, \$database, \$rowPrefix);
+    }
+
+    public function deleteRecord(Database \$database, &\$exceptionMessage = "", \$rowPrefix = ""): bool
+    {
+        return true;
+    }
+
+    public function prepareSearch(\$searchColumn, \$searchValue, Database \$database): string
+    {
+        return '';
+    }
+
+    public function afterCreateOrUpdateRecord(Database \$database, \$recordId, \$update, \$rowPrefix = "", &\$exceptionMessage = ""): bool
+    {
+        return true;
+    }
+
+}
